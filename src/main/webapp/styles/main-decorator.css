@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #cc092f;
+    color: #e6e6e6;
+    font-weight: bold;
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5rem;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header ul li {
+    cursor: pointer;
+}
+
+header ul li:hover {
+    color: white;
+}
+
+footer {
+    background-color: #cc092f;
+    height: 10vh;
+}

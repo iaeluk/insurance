@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+    
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="">
+            <result>pages/home.jsp</result>
+        </action>
+
+        <!-- <action name="segurado">
+            <result>pages/segurado.jsp</result>
+        </action> -->
+
+        <action name="apolice">
+            <result>pages/apolice.jsp</result>
+        </action>
+
+        <action name="certificado">
+            <result>pages/certificado.jsp</result>
+        </action>
+
+        <!-- SEGURADO -->
+        <action name="salvar-segurado" class="br.com.bradescoseguros.backend.actions.SeguradoAction">
+            <result name="SUCCESS">pages/segurado.jsp</result>
+        </action>
+
+        <action name="salvar-segurado-submit" class="br.com.bradescoseguros.backend.actions.SeguradoAction" method="salvarSegurado">
+            <result name="SUCCESS">pages/segurado.jsp</result>
+        </action>
+
+         <action name="buscar-segurado" class="br.com.bradescoseguros.backend.actions.SeguradoAction" method="buscarSegurado">
+            <result name="SUCCESS">pages/segurado.jsp</result>
+        </action>
+
+        <action name="buscar-segurado-id" class="br.com.bradescoseguros.backend.actions.SeguradoAction" method="buscarSeguradoPorId">
+            <param name="id"></param>
+            <result name="SUCCESS">pages/segurado.jsp</result>
+        </action>
+
+        <action name="editar-segurado-id" class="br.com.bradescoseguros.backend.actions.SeguradoAction" method="editarSegurado">
+            <param name="id"></param>
+            <result name="SUCCESS">pages/segurado.jsp</result>
+        </action>
+
+        <action name="deletar-segurado-id" class="br.com.bradescoseguros.backend.actions.SeguradoAction" method="deletarSegurado">
+            <param name="id"></param>
+            <result name="SUCCESS">pages/segurado.jsp</result>
+        </action>
+
+
+        <!-- APOLICE -->
+        <action name="salvar-apolice" class="br.com.bradescoseguros.backend.actions.ApoliceAction" >
+            <result name="SUCCESS">pages/apolice.jsp</result>
+        </action>
+
+        <action name="salvar-apolice-submit" class="br.com.bradescoseguros.backend.actions.ApoliceAction" method="salvarApoliceAuto">
+            <result name="SUCCESS">pages/apolice.jsp</result>
+        </action>
+
+         <action name="buscar-apolice" class="br.com.bradescoseguros.backend.actions.ApoliceAction" method="buscarApoliceAuto">
+            <result name="SUCCESS">pages/apolice.jsp</result>
+        </action>
+
+        <action name="buscar-apolice-id" class="br.com.bradescoseguros.backend.actions.ApoliceAction" method="buscarApoliceAutoPorId">
+            <param name="id"></param>
+            <result name="SUCCESS">pages/apolice.jsp</result>
+        </action>
+
+        <action name="editar-apolice-id" class="br.com.bradescoseguros.backend.actions.ApoliceAction" method="paginaEdicaoApolice">
+            <param name="id"></param>
+            <result name="SUCCESS">pages/apolice.jsp</result>
+        </action>
+
+        <action name="editar-apolice-id-submit" class="br.com.bradescoseguros.backend.actions.ApoliceAction" method="editarApoliceAuto">
+            <param name="id"></param>
+            <result name="SUCCESS">pages/apolice.jsp</result>
+        </action>
+
+        <action name="deletar-apolice-id" class="br.com.bradescoseguros.backend.actions.ApoliceAction" method="deletarApoliceAuto">
+            <param name="id"></param>
+            <result name="SUCCESS">pages/apolice.jsp</result>
+        </action>
+
+    </package>
+
+</struts>

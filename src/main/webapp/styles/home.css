@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+a {
+    all: unset;
+}
+
+body {
+    background-color: #f4f3f3;
+    color: white;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    min-height: 80vh;
+}
+
+main ul {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+}
+
+main ul li {
+    font-size: 1.5rem;
+    padding: 4rem 5rem;
+    background-color: #393939;
+    border-radius: 1rem;
+}
+
+main ul li:hover {
+    background-color: #cc092f;
+    cursor: pointer;
+}
