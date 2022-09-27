@@ -32,15 +32,15 @@ public class TelefoneDAO implements CrudInterface<Telefone, Segurado> {
         String sql = "INSERT INTO telefone (segurado_id, descricao_tipo_telefone, ddd, numero, ramal) VALUES (?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
 
-            statement.setInt(1, segurado.getId());
-            statement.setString(2, telefone.getDescricaoTipoTelefone());
-            statement.setString(3, telefone.getDdd());
-            statement.setString(4, telefone.getNumero());
-            statement.setString(5, telefone.getRamal());
+            ps.setInt(1, segurado.getId());
+            ps.setString(2, telefone.getDescricaoTipoTelefone());
+            ps.setString(3, telefone.getDdd());
+            ps.setString(4, telefone.getNumero());
+            ps.setString(5, telefone.getRamal());
 
-            statement.executeUpdate();
+            ps.executeUpdate();
 
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
@@ -56,8 +56,8 @@ public class TelefoneDAO implements CrudInterface<Telefone, Segurado> {
 
         try {
             String sql = "SELECT * FROM endereco";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultado = statement.executeQuery();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet resultado = ps.executeQuery();
             while (resultado.next()) {
                 Telefone telefone = new Telefone(
                         resultado.getInt("id"),
@@ -81,9 +81,9 @@ public class TelefoneDAO implements CrudInterface<Telefone, Segurado> {
     public Telefone buscarPorId(Integer id) {
         try {
             String sql = "SELECT * FROM telefone WHERE segurado_id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, id);
-            ResultSet resultado = statement.executeQuery();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet resultado = ps.executeQuery();
 
             while (resultado.next()) {
                 Telefone telefone = new Telefone(
@@ -140,10 +140,10 @@ public class TelefoneDAO implements CrudInterface<Telefone, Segurado> {
         String sql = "DELETE FROM telefone WHERE segurado_id = ?";
 
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
 
-            statement.setInt(1, id);
-            statement.executeUpdate();
+            ps.setInt(1, id);
+            ps.executeUpdate();
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {

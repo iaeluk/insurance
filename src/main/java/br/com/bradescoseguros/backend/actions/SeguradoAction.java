@@ -8,7 +8,11 @@ import br.com.bradescoseguros.backend.entity.Endereco;
 import br.com.bradescoseguros.backend.entity.Segurado;
 import br.com.bradescoseguros.backend.entity.Telefone;
 import br.com.bradescoseguros.backend.facade.SeguradoFacade;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class SeguradoAction {
 
     private Segurado segurado;
@@ -98,65 +102,4 @@ public class SeguradoAction {
         }
         return "ERROR";
     }
-
-    public Segurado getSegurado() {
-        return segurado;
-    }
-
-    public void setSegurado(Segurado segurado) {
-        this.segurado = segurado;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Telefone getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
-    }
-
-    public ArrayList<Segurado> getSegurados() {
-        return segurados;
-    }
-
-    public String getTipoFormulario() {
-        return tipoFormulario;
-    }
-
-    public void setTipoFormulario(String tipoFormulario) {
-        this.tipoFormulario = tipoFormulario;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    
-    public Boolean getVerDetalhes() {
-        return verDetalhes;
-    }
-
-    public void setVerDetalhes(Boolean verDetalhes) {
-        this.verDetalhes = verDetalhes;
-    }
-
-    public Boolean getVerEdicao() {
-        return verEdicao;
-    }
-
-    public void setVerEdicao(Boolean verEdicao) {
-        this.verEdicao = verEdicao;
-    }
-
 }

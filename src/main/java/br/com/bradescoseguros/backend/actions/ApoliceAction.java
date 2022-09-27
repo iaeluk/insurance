@@ -8,7 +8,11 @@ import br.com.bradescoseguros.backend.entity.ApoliceAuto;
 import br.com.bradescoseguros.backend.entity.Segurado;
 import br.com.bradescoseguros.backend.facade.ApoliceAutoFacade;
 import br.com.bradescoseguros.backend.facade.SeguradoFacade;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ApoliceAction {
 
     private ApoliceAuto apoliceAuto;
@@ -107,61 +111,4 @@ public class ApoliceAction {
         }
         return "ERROR";
     }
-
-    public ApoliceAuto getApoliceAuto() {
-        return apoliceAuto;
-    }
-
-    public void setApoliceAuto(ApoliceAuto apoliceAuto) {
-        this.apoliceAuto = apoliceAuto;
-    }
-
-    public ArrayList<ApoliceAuto> getApolices() {
-        return apolices;
-    }
-
-    public void setApolices(ArrayList<ApoliceAuto> apolices) {
-        this.apolices = apolices;
-    }
-
-    public ArrayList<Segurado> getSegurados() {
-        return segurados;
-    }
-
-    public void setSegurados(ArrayList<Segurado> segurados) {
-        this.segurados = segurados;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getTipoFormulario() {
-        return tipoFormulario;
-    }
-
-    public void setTipoFormulario(String tipoFormulario) {
-        this.tipoFormulario = tipoFormulario;
-    }
-
-    public Boolean getVerDetalhes() {
-        return verDetalhes;
-    }
-
-    public void setVerDetalhes(Boolean verDetalhes) {
-        this.verDetalhes = verDetalhes;
-    }
-
-    public Boolean getVerEdicao() {
-        return verEdicao;
-    }
-
-    public void setVerEdicao(Boolean verEdicao) {
-        this.verEdicao = verEdicao;
-    }
-
 }

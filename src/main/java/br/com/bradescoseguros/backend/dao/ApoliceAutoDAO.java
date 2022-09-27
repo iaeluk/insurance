@@ -34,25 +34,25 @@ public class ApoliceAutoDAO implements CrudInterface<ApoliceAuto, Segurado> {
         String sql = "INSERT INTO apolice_auto (segurado_id, cia, numero_documento_corretor, email_corretor, data_inicio_vigencia, data_fim_vigencia, descricao, item, nome_corretor, quantidade_dias_renovacao, ramo, segmento, sucursal, tipo_apolice, marca_veiculo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
 
-            statement.setInt(1, segurado.getId());
-            statement.setString(2, apoliceAuto.getCia());
-            statement.setString(3, apoliceAuto.getNumeroDocumentoCorretor());
-            statement.setString(4, apoliceAuto.getEmailCorretor());
-            statement.setDate(5, new Date(apoliceAuto.getDataInicioVigencia().getTime()));
-            statement.setDate(6, new Date(apoliceAuto.getDataFimVigencia().getTime()));
-            statement.setString(7, apoliceAuto.getDescricao());
-            statement.setString(8, apoliceAuto.getItem());
-            statement.setString(9, apoliceAuto.getNomeCorretor());
-            statement.setString(10, apoliceAuto.getQuantidadeDiasRenovacao());
-            statement.setString(11, apoliceAuto.getRamo());
-            statement.setString(12, apoliceAuto.getSegmento());
-            statement.setString(13, apoliceAuto.getSucursal());
-            statement.setString(14, String.valueOf(apoliceAuto.getTipoApolice()));
-            statement.setString(15, apoliceAuto.getMarcaVeiculo());
+            ps.setInt(1, segurado.getId());
+            ps.setString(2, apoliceAuto.getCia());
+            ps.setString(3, apoliceAuto.getNumeroDocumentoCorretor());
+            ps.setString(4, apoliceAuto.getEmailCorretor());
+            ps.setDate(5, new Date(apoliceAuto.getDataInicioVigencia().getTime()));
+            ps.setDate(6, new Date(apoliceAuto.getDataFimVigencia().getTime()));
+            ps.setString(7, apoliceAuto.getDescricao());
+            ps.setString(8, apoliceAuto.getItem());
+            ps.setString(9, apoliceAuto.getNomeCorretor());
+            ps.setString(10, apoliceAuto.getQuantidadeDiasRenovacao());
+            ps.setString(11, apoliceAuto.getRamo());
+            ps.setString(12, apoliceAuto.getSegmento());
+            ps.setString(13, apoliceAuto.getSucursal());
+            ps.setString(14, String.valueOf(apoliceAuto.getTipoApolice()));
+            ps.setString(15, apoliceAuto.getMarcaVeiculo());
 
-            statement.executeUpdate();
+            ps.executeUpdate();
 
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
@@ -68,8 +68,8 @@ public class ApoliceAutoDAO implements CrudInterface<ApoliceAuto, Segurado> {
 
         try {
             String sql = "SELECT * FROM apolice_auto";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultado = statement.executeQuery();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet resultado = ps.executeQuery();
             while (resultado.next()) {
                 ApoliceAuto apoliceAuto = new ApoliceAuto(
                         resultado.getInt("id"),
@@ -103,9 +103,9 @@ public class ApoliceAutoDAO implements CrudInterface<ApoliceAuto, Segurado> {
     public ApoliceAuto buscarPorId(Integer id) {
         try {
             String sql = "SELECT * FROM apolice_auto WHERE id=?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, id);
-            ResultSet resultado = statement.executeQuery();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet resultado = ps.executeQuery();
 
             while (resultado.next()) {
                 ApoliceAuto apoliceAuto = new ApoliceAuto(
@@ -192,10 +192,10 @@ public class ApoliceAutoDAO implements CrudInterface<ApoliceAuto, Segurado> {
         String sql = "DELETE FROM apolice_auto WHERE id=?";
 
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
 
-            statement.setInt(1, id);
-            statement.executeUpdate();
+            ps.setInt(1, id);
+            ps.executeUpdate();
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {

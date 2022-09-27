@@ -5,8 +5,8 @@
 
         <head>
             <meta charset="UTF-8">
-            <title>Segurado</title>
-            <link rel="stylesheet" href="styles/segurado.css">
+            <title>Apólice</title>
+            <link rel="stylesheet" href="styles/apolice.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>
@@ -65,6 +65,13 @@
                             }
                         })
                     })
+
+                    let varSeguradoId = <s:property value="apoliceAuto.seguradoId"/>
+                    $(".opcoesSegurados").each(function(){
+                        if($(this).val() == varSeguradoId) {
+                            $(this).attr("selected", "selected")
+                        }
+                    });
                 });
             </script>
         </head>
@@ -134,10 +141,10 @@
                         <span>
                             <label for="tipoApolice">Tipo de Apólice:</label>
                             <select name="apoliceAuto.tipoApolice">
-                                <option value="A" selected>A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
+                                <option value="TIPO_APOLICE_A">TIPO_APOLICE_A</option>
+                                <option value="TIPO_APOLICE_B">TIPO_APOLICE_B</option>
+                                <option value="TIPO_APOLICE_C">TIPO_APOLICE_C</option>
+                                <option value="TIPO_APOLICE_D">TIPO_APOLICE_D</option>
                             </select>
                         </span>
 
@@ -165,11 +172,13 @@
                             <caption>CONSULTA DE APÓLICE</caption>
                             <tr>
                                 <th>ID</th>
+                                <th>ID Segurado</th>
+                                <th>Nome Corretor</th>
                                 <th>Tipo Apólice</th>
                                 <th>Marca Veículo</th>
                                 <th>Data de Início</th>
                                 <th>Data de Fim</th>
-                                <th>Nome Corretor</th>
+                                
                                 <th>Edição/Exclusão</th>
                             </tr>
                             <s:iterator value="apolices">
@@ -177,6 +186,12 @@
                                 <tr class="linha">
                                     <td>
                                         <s:property value="id" />
+                                    </td>
+                                    <td>
+                                        <s:property value="seguradoId" />
+                                    </td>
+                                    <td>
+                                        <s:property value="nomeCorretor" />
                                     </td>
                                     <td>
                                         <s:property value="tipoApolice" />
@@ -190,9 +205,7 @@
                                     <td>
                                         <s:date name="dataFimVigencia" format="dd/MM/yyyy" />
                                     </td>
-                                    <td>
-                                        <s:property value="nomeCorretor" />
-                                    </td>
+                                    
                                     <td class="acoes">
                                         <s:url var="buscarApoliceAutoPorId" action="buscar-apolice-id">
                                             <s:param name="id" value="id" />
@@ -228,8 +241,9 @@
                                     <h3>Dados da Apólice</h3>
                                     <div class="dados-pessoais">
                                     <s:textfield label="Id" name="apoliceAuto.id" type="text" disabled="true" value="%{apoliceAuto.id}" />
-                                    <s:textfield label="Id do segurado" name="apoliceAuto.seguradoId" type="text" disabled="true" value="%{apoliceAuto.seguradoId}" />
+                                   
                                     <s:textfield label="Cia" name="apoliceAuto.cia" type="text" disabled="true" value="%{apoliceAuto.cia}" />
+                                    <s:textfield label="Nome Corretor" name="apoliceAuto.nomeCorretor" type="text" disabled="true" value="%{apoliceAuto.nomeCorretor}" />
                                     <s:textfield label="Nº documento corretor" name="apoliceAuto.numeroDocumentoCorretor" type="text" disabled="true" value="%{apoliceAuto.numeroDocumentoCorretor}" />
                                     <s:textfield label="E-mail corretor" name="apoliceAuto.emailCorretor" type="text" disabled="true" value="%{apoliceAuto.emailCorretor}" />
                                     <label for="dataInicioVigencia">Data início vigência:</label>
@@ -238,73 +252,64 @@
                                         <input type="text" disabled="true" value="<s:date name="%{apoliceAuto.dataFimVigencia}" format="dd/MM/yyyy"></s:date>" >
                                     <s:textfield label="Descrição" name="apoliceAuto.descricao" type="text" disabled="true" value="%{apoliceAuto.descricao}" />
                                     <s:textfield label="Item" name="apoliceAuto.item" type="text" disabled="true" value="%{apoliceAuto.item}" />
-                                    <s:textfield label="Nome Corretor" name="apoliceAuto.nomeCorretor" type="text" disabled="true" value="%{apoliceAuto.nomeCorretor}" />
                                     <s:textfield label="Quantidade dias renovação" name="apoliceAuto.quantidadeDiasRenovacao" type="text" disabled="true" value="%{apoliceAuto.quantidadeDiasRenovacao}" />
                                     <s:textfield label="Ramo" name="apoliceAuto.ramo" type="text" disabled="true" value="%{apoliceAuto.ramo}" />
                                     <s:textfield label="Segmento" name="apoliceAuto.segmento" type="text" disabled="true" value="%{apoliceAuto.segmento}" />
                                     <s:textfield label="Sucursal" name="apoliceAuto.sucursal" type="text" disabled="true" value="%{apoliceAuto.sucursal}" />
                                     <s:textfield label="Tipo Apólice" name="apoliceAuto.tipoApolice" type="text" disabled="true" value="%{apoliceAuto.tipoApolice}" />
                                     <s:textfield label="Marca veículo" name="apoliceAuto.marcaVeiculo" type="text" disabled="true" value="%{apoliceAuto.marcaVeiculo}" />
-                                    </div>
-            
-                                    <!-- <h3>Endereço</h3>
-                                    <div class="dados-pessoais">
-                                    <s:textfield label="CEP" name="endereco.cep" type="text" disabled="true" value="%{endereco.cep}" />
-                                    <s:textfield label="Complemento" name="endereco.complemento" type="text" disabled="true" value="%{endereco.complemento}" />
-                                    <s:textfield label="Logradouro" name="endereco,logradouro" type="text" disabled="true" value="%{endereco.logradouro}" />
-                                    <s:textfield label="Descrição Logradouro" name="endereco.descricaoTipoLogradouro" type="text" disabled="true" value="%{endereco.descricaoTipoLogradouro}" />
-                                    <s:textfield label="Número" name="endereco.numero" type="text" disabled="true" value="%{endereco.numero}" />
-                                    <s:textfield label="Tipo logradouro" name="endereco.tipoLogradouro" type="text" disabled="true" value="%{endereco.tipoLogradouro}" />
-                                    <s:textfield label="Cidade" class="cidade" name="endereco.cidade" type="text" disabled="true" value="%{endereco.cidade}" />
-                                    <s:textfield label="UF" name="endereco.uf" type="text" disabled="true" value="%{endereco.uf}" />
-                                    <s:textfield label="Bairro" name="endereco.bairro" type="text" disabled="true" value="%{endereco.bairro}" />
-                                    <s:textfield label="" type="text" disabled="true" value="" />
-                                    </div>
-            
-                                    <h3>Contato</h3>
-                                    <div class="dados-pessoais">
-                                    <s:textfield label="DDD" name="telefone.ddd" type="text" disabled="true" value="%{telefone.ddd}" />
-                                    <s:textfield label="Número" name="telefone.numero" type="text" disabled="true" value="%{telefone.numero}" />
-                                    <s:textfield label="Ramal" name="telefone.ramal" type="text" disabled="true" value="%{telefone.ramal}" />
-                                    <s:textfield label="Descrição" name="telefone.descricaoTipoTelefone" type="text" disabled="true" value="%{telefone.descricaoTipoTelefone}" />
-                                    </div> -->
+                                    <div class="editarSegurado" style="margin-top: -1px;">
+                                        <label for="seguradoId">Segurado:</label>
+                                            <select name="apoliceAuto.seguradoId" id="seguradoId" disabled="true">
+                                                <s:iterator value="segurados">
+                                                        <option class="opcoesSegurados" value="<s:property value="id" />"><s:property value="nome" /></option>
+                                                 </s:iterator>
+                                            </select>
+                                        </div>
+                                </div>
                                 </div>
                             </div>
                         </s:if>
                 </s:if>
 
                 <s:if test="%{verEdicao==true}">
-                    <form class="form-edicao" method="post" action="editar-apolice-id-submit?id=<s:property value="id" />">
-                        <span class="btn-fechar"><img src="https://cdn-icons-png.flaticon.com/512/3161/3161830.png" width="20px" alt="Fechar" title="Fechar"></span>
-                        <div class="form-edicao-items">
-                        <h3>Dados pessoais</h3>
-                        <div class="dados-pessoais">
-                            <s:textfield label="Id" name="apoliceAuto.id" type="text" disabled="true" value="%{apoliceAuto.id}" />
-                            <s:textfield label="seguradoId" name="apoliceAuto.seguradoId" type="text" value="%{apoliceAuto.seguradoId}" />
-                            <s:textfield label="Cia" name="apoliceAuto.cia" type="text" value="%{apoliceAuto.cia}" />
-                            <s:textfield label="Nº documento corretor" name="apoliceAuto.numeroDocumentoCorretor" type="text" value="%{apoliceAuto.numeroDocumentoCorretor}" />
-                            <s:textfield label="E-mail corretor" name="apoliceAuto.emailCorretor" type="text" value="%{apoliceAuto.emailCorretor}" />
-                            <label for="dataInicioVigencia">Data início vigência:</label>
-                                <input type="text" value="<s:date name="%{apoliceAuto.dataInicioVigencia}" format="dd/MM/yyyy"></s:date>" placeholder="dd/mm/yyyy" >
-                            <label for="dataFimVigencia">Data fim vigência:</label>
-                                <input type="text" value="<s:date name="%{apoliceAuto.dataFimVigencia}" format="dd/MM/yyyy"></s:date>" placeholder="dd/mm/yyyy" >
-                            <s:textfield label="Descrição" name="apoliceAuto.descricao" type="text" value="%{apoliceAuto.descricao}" />
-                            <s:textfield label="Item" name="apoliceAuto.item" type="text" value="%{apoliceAuto.item}" />
-                            <s:textfield label="Nome Corretor" name="apoliceAuto.nomeCorretor" type="text" value="%{apoliceAuto.nomeCorretor}" />
-                            <s:textfield label="Quantidade dias renovação" name="apoliceAuto.quantidadeDiasRenovacao" type="text" value="%{apoliceAuto.quantidadeDiasRenovacao}" />
-                            <s:textfield label="Ramo" name="apoliceAuto.ramo" type="text" value="%{apoliceAuto.ramo}" />
-                            <s:textfield label="Segmento" name="apoliceAuto.segmento" type="text" value="%{apoliceAuto.segmento}" />
-                            <s:textfield label="Sucursal" name="apoliceAuto.sucursal" type="text" value="%{apoliceAuto.sucursal}" />
-                            <s:textfield label="Tipo Apólice" name="apoliceAuto.tipoApolice" type="text" value="%{apoliceAuto.tipoApolice}" />
-                            <s:textfield label="Marca veículo" name="apoliceAuto.marcaVeiculo" type="text" value="%{apoliceAuto.marcaVeiculo}" />
-                            </div>
-                        </div>
+                            <form class="form-edicao" method="post" action="editar-apolice-id-submit?id=<s:property value="id" />">
+                                <span class="btn-fechar"><img src="https://cdn-icons-png.flaticon.com/512/3161/3161830.png" width="20px" alt="Fechar" title="Fechar"></span>
+                                <div class="form-edicao-items">
+                                    <h3>Dados da Apólice</h3>
+                                    <div class="dados-pessoais">
+                                    <s:textfield label="Id" name="apoliceAuto.id" type="text" disabled="true" value="%{apoliceAuto.id}" />
+                                    <s:textfield label="Cia" name="apoliceAuto.cia" type="text" value="%{apoliceAuto.cia}" />
+                                    <s:textfield label="Nome Corretor" name="apoliceAuto.nomeCorretor" type="text" value="%{apoliceAuto.nomeCorretor}" />
+                                    <s:textfield label="Nº documento corretor" name="apoliceAuto.numeroDocumentoCorretor" type="text" value="%{apoliceAuto.numeroDocumentoCorretor}" />
+                                    <s:textfield label="E-mail corretor" name="apoliceAuto.emailCorretor" type="text" value="%{apoliceAuto.emailCorretor}" />
+                                    <s:set var="varDataInicioVigencia"><s:date name="apoliceAuto.dataInicioVigencia" format="yyyy-MM-dd"/></s:set>
+                                    <s:textfield label="Data início vigência" name="apoliceAuto.dataInicioVigencia" value="%{varDataInicioVigencia}" type="date"/>
+                                    <s:set var="varDataFimVigencia"><s:date name="apoliceAuto.dataFimVigencia" format="yyyy-MM-dd"/></s:set>
+                                    <s:textfield label="Data fim vigência" name="apoliceAuto.dataFimVigencia" value="%{varDataFimVigencia}" type="date"/>
+                                    <s:textfield label="Descrição" name="apoliceAuto.descricao" type="text" value="%{apoliceAuto.descricao}" />
+                                    <s:textfield label="Item" name="apoliceAuto.item" type="text" value="%{apoliceAuto.item}" />
+                                    <s:textfield label="Quantidade dias renovação" name="apoliceAuto.quantidadeDiasRenovacao" type="text" value="%{apoliceAuto.quantidadeDiasRenovacao}" />
+                                    <s:textfield label="Ramo" name="apoliceAuto.ramo" type="text" value="%{apoliceAuto.ramo}" />
+                                    <s:textfield label="Segmento" name="apoliceAuto.segmento" type="text" value="%{apoliceAuto.segmento}" />
+                                    <s:textfield label="Sucursal" name="apoliceAuto.sucursal" type="text" value="%{apoliceAuto.sucursal}" />
+                                    <s:textfield label="Tipo Apólice" name="apoliceAuto.tipoApolice" type="text" value="%{apoliceAuto.tipoApolice}" />
+                                    <s:textfield label="Marca veículo" name="apoliceAuto.marcaVeiculo" type="text" value="%{apoliceAuto.marcaVeiculo}" />
+                                    <div class="editarSegurado" style="margin-top: 3px;">
+                                    <label for="seguradoId">Segurado:</label>
+                                        <select name="apoliceAuto.seguradoId" id="seguradoId">
+                                            <s:iterator value="segurados">
+                                                    <option class="opcoesSegurados" value="<s:property value="id" />"><s:property value="nome" /></option>
+                                             </s:iterator>
+                                        </select>
+                                    </div>
+                                </div>
+                                </div>
 
-                        <s:url var="editarApoliceAuto" action="editar-apolice-id-submit"><s:param name="id" value="id" /></s:url>
-                        <button type="submit"><s:a id="salvar" class="editarApoliceAuto" href="%{editarApoliceAuto}">ATUALIZAR</s:a></button>
-                    </form>
-                </s:if>
-
+                                <s:url var="editarApoliceAuto" action="editar-apolice-id-submit"><s:param name="id" value="id" /></s:url>
+                                <button type="submit"><s:a id="salvar" class="editarApoliceAuto" href="%{editarApoliceAuto}">ATUALIZAR</s:a></button>
+                            </form>
+                        </s:if>
             </main>
         </body>
         </html>

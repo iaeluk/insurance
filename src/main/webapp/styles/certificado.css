@@ -15,6 +15,8 @@ body {
 }
 
 main {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,13 +52,13 @@ main {
     color: #cc092f;
 }
 
-form {
+form,
+table {
     background-color: #e6e6e6;
     padding: 3rem;
-    margin: 3rem;
-    width: 50%;
-    border-radius: 1rem;
-
+    margin: 3rem 0;
+    min-width: 63%;
+    border-radius: .5rem;
 
     display: flex;
     flex-direction: column;
@@ -68,11 +70,23 @@ h3 {
     margin: .5rem 0;
 }
 
-form span {
+form span:not(.editarSegurado) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+}
+
+.editarSegurado {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    width: 100%;
+}
+
+.editarSegurado select {
+    padding: .44rem;
+    width: 100%;
 }
 
 form span label {
@@ -86,8 +100,127 @@ input {
     padding: .4rem;
 }
 
+table {
+    border-collapse: collapse;
+  width: 100%;
+}
 
-.btn {
+table caption {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    text-align: left;
+}
+
+table tr th {
     background-color: #cc092f;
+    color: #e6e6e6;
+    padding: .35rem;
+}
+
+table tr td {
+    text-align: center;
+    padding: .2rem;
+    border-bottom: 1px solid #c5c2c2;
+}
+
+span {
+    cursor: pointer;
+}
+
+button {
+    background-color: #cc092f;
+    color: #e6e6e6;
+    padding: .3rem;
+    font-size: 1.5rem;
+
+    border: none;
+
+    margin-top: 2.5rem;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #eb0a37;
+}
+
+.title {
     padding: 3rem;
 }
+
+.excluir, .editar {
+    font-weight: bold;
+}
+
+.excluir:hover, .editar:hover {
+    color:#eb0a37
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.form-detalhes, .form-edicao {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    width: 87%;
+    height: 95%;
+    background-color: #e7e3e3fd;
+    border-radius: .5rem;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.form-detalhes-items, .form-edicao-items {
+    padding: 1rem;
+}
+
+.form-detalhes-items .dados-pessoais, .form-edicao-items .dados-pessoais{
+    columns: 2;
+}
+
+.form-detalhes-items .dados-pessoais > *, .form-edicao-items .dados-pessoais > * {
+    margin: .3rem; 
+}
+
+.btn-fechar {
+    position: sticky;
+    top: 0;
+    align-self: flex-end;
+    color: black;
+    filter: opacity(60%);
+
+    padding: .5rem;
+}
+
+.btn-fechar:hover {
+    color: #eb0a37;
+    filter: opacity(100%);
+}
+
+.detalhes, .editar, .excluir {
+    filter: opacity(60%);
+}
+
+.detalhes:hover, .editar:hover, .excluir:hover {
+    filter: opacity(100%);
+}
+
+input:disabled, select:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }
+
+  #seguradoId {
+    width: 100% !important;
+  }
+  

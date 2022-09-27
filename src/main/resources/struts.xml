@@ -13,18 +13,6 @@
             <result>pages/home.jsp</result>
         </action>
 
-        <!-- <action name="segurado">
-            <result>pages/segurado.jsp</result>
-        </action> -->
-
-        <action name="apolice">
-            <result>pages/apolice.jsp</result>
-        </action>
-
-        <action name="certificado">
-            <result>pages/certificado.jsp</result>
-        </action>
-
         <!-- SEGURADO -->
         <action name="salvar-segurado" class="br.com.bradescoseguros.backend.actions.SeguradoAction">
             <result name="SUCCESS">pages/segurado.jsp</result>
@@ -86,6 +74,40 @@
             <param name="id"></param>
             <result name="SUCCESS">pages/apolice.jsp</result>
         </action>
+
+
+    <!-- CERTIFICADO -->
+    <action name="salvar-certificado" class="br.com.bradescoseguros.backend.actions.CertificadoAction" >
+        <result name="SUCCESS">pages/certificado.jsp</result>
+    </action>
+
+    <action name="salvar-certificado-submit" class="br.com.bradescoseguros.backend.actions.CertificadoAction" method="salvarCertificado">
+        <result name="SUCCESS">pages/certificado.jsp</result>
+    </action>
+
+     <action name="buscar-certificado" class="br.com.bradescoseguros.backend.actions.CertificadoAction" method="buscarCertificado">
+        <result name="SUCCESS">pages/certificado.jsp</result>
+    </action>
+
+    <action name="buscar-certificado-id" class="br.com.bradescoseguros.backend.actions.CertificadoAction" method="buscarCertificadoPorId">
+        <param name="id"></param>
+        <result name="SUCCESS">pages/certificado.jsp</result>
+    </action>
+
+    <action name="editar-certificado-id" class="br.com.bradescoseguros.backend.actions.CertificadoAction" method="paginaEdicaoCertificado">
+        <param name="id"></param>
+        <result name="SUCCESS">pages/certificado.jsp</result>
+    </action>
+
+    <action name="editar-certificado-id-submit" class="br.com.bradescoseguros.backend.actions.CertificadoAction" method="editarCertificado">
+        <param name="id"></param>
+        <result name="SUCCESS">pages/certificado.jsp</result>
+    </action>
+
+    <action name="deletar-certificado-id" class="br.com.bradescoseguros.backend.actions.CertificadoAction" method="deletarCertificado">
+        <param name="id"></param>
+        <result name="SUCCESS">pages/certificado.jsp</result>
+    </action>
 
     </package>
 

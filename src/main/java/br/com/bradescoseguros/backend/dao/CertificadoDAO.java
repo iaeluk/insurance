@@ -33,16 +33,16 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
         String sql = "INSERT INTO certificado (apolice_auto_id, cd_produto_ret, chave_negocio, descricao_situacao, nome_produto, ramo) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
 
-            statement.setInt(1, apoliceAuto.getId());
-            statement.setString(2, certificado.getCdProdutoRet());
-            statement.setString(3, certificado.getChaveNegocio());
-            statement.setString(4, certificado.getDescricaoSituacao().toString());
-            statement.setString(5, certificado.getNomeProduto());
-            statement.setString(6, certificado.getRamo());
+            ps.setInt(1, apoliceAuto.getId());
+            ps.setString(2, certificado.getCdProdutoRet());
+            ps.setString(3, certificado.getChaveNegocio());
+            ps.setString(4, certificado.getDescricaoSituacao().toString());
+            ps.setString(5, certificado.getNomeProduto());
+            ps.setString(6, certificado.getRamo());
 
-            statement.executeUpdate();
+            ps.executeUpdate();
 
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
@@ -58,15 +58,15 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
 
         try {
             String sql = "SELECT * FROM certificado";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultado = statement.executeQuery();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet resultado = ps.executeQuery();
             while (resultado.next()) {
                 Certificado certificado = new Certificado(
                         resultado.getInt("id"),
                         resultado.getInt("apolice_auto_id"),
                         resultado.getString("cd_produto_ret"),
                         resultado.getString("chave_negocio"),
-                        TipoDescricaoSituacao.valueOf(resultado.getString("tipo_descricao-situacao")),
+                        TipoDescricaoSituacao.valueOf(resultado.getString("descricao_situacao")),
                         resultado.getString("nome_produto"),
                         resultado.getString("ramo"));
 
@@ -83,10 +83,10 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
     @Override
     public Certificado buscarPorId(Integer id) {
         try {
-            String sql = "SELECT * FROM certificado WHERE segurado_id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, id);
-            ResultSet resultado = statement.executeQuery();
+            String sql = "SELECT * FROM certificado WHERE id=?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet resultado = ps.executeQuery();
 
             while (resultado.next()) {
                 Certificado certificado = new Certificado(
@@ -94,7 +94,7 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
                         resultado.getInt("apolice_auto_id"),
                         resultado.getString("cd_produto_ret"),
                         resultado.getString("chave_negocio"),
-                        TipoDescricaoSituacao.valueOf(resultado.getString("tipo_descricao-situacao")),
+                        TipoDescricaoSituacao.valueOf(resultado.getString("descricao_situacao")),
                         resultado.getString("nome_produto"),
                         resultado.getString("ramo"));
 
@@ -109,19 +109,48 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
 
     @Override
     public Certificado editar(Certificado certificado, Integer id) {
-        // TODO Auto-generated method stub
+        try {
+            String sql = "UPDATE certificado SET apolice_auto_id=?, cd_produto_ret=?, chave_negocio=?, descricao_situacao=?, nome_produto=?, ramo=? WHERE id=?";
+
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, certificado.getApoliceAutoId());
+            ps.setString(2, certificado.getCdProdutoRet());
+            ps.setString(3, certificado.getChaveNegocio());
+            ps.setString(4, certificado.getDescricaoSituacao().toString());
+            ps.setString(5, certificado.getNomeProduto());
+            ps.setString(6, certificado.getRamo());
+            ps.setInt(7, id);
+
+            ResultSet resultado = ps.executeQuery();
+
+            while (resultado.next()) {
+                Certificado certificadoAtualizado = new Certificado(
+                        resultado.getInt("id"),
+                        resultado.getInt("apolice_auto_id"),
+                        resultado.getString("cd_produto_ret"),
+                        resultado.getString("chave_negocio"),
+                        TipoDescricaoSituacao.valueOf(resultado.getString("descricao_situacao")),
+                        resultado.getString("nome_produto"),
+                        resultado.getString("ramo"));
+
+                return certificadoAtualizado;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public void deletar(Integer id) {
-        String sql = "DELETE FROM certificado WHERE segurado_id = ?";
+        String sql = "DELETE FROM certificado WHERE id=?";
 
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
 
-            statement.setInt(1, id);
-            statement.executeUpdate();
+            ps.setInt(1, id);
+            ps.executeUpdate();
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {

@@ -25,7 +25,6 @@ public class SeguradoFacade {
     public SeguradoFacade() {
     }
 
-
     public void salvarSegurado(Segurado segurado, Endereco endereco, Telefone telefone) {
             seguradoDAO.salvar(segurado);
             ArrayList<Segurado> listaDeSegurados = seguradoDAO.buscar();
@@ -65,5 +64,4 @@ public class SeguradoFacade {
         telefoneDAO.deletar(id);
         seguradoDAO.deletar(id);
     }
-
 }

@@ -32,20 +32,20 @@ public class EnderecoDAO implements CrudInterface<Endereco, Segurado> {
         String sql = "INSERT INTO endereco (segurado_id, cep, complemento, descricao_tipo_logradouro, logradouro, numero, tipo_logradouro, cidade, uf, bairro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
 
-            statement.setInt(1, segurado.getId());
-            statement.setString(2, endereco.getCep());
-            statement.setString(3, endereco.getComplemento());
-            statement.setString(4, endereco.getDescricaoTipoLogradouro());
-            statement.setString(5, endereco.getLogradouro());
-            statement.setString(6, endereco.getNumero());
-            statement.setString(7, endereco.getTipoLogradouro());
-            statement.setString(8, endereco.getCidade());
-            statement.setString(9, endereco.getUf());
-            statement.setString(10, endereco.getBairro());
+            ps.setInt(1, segurado.getId());
+            ps.setString(2, endereco.getCep());
+            ps.setString(3, endereco.getComplemento());
+            ps.setString(4, endereco.getDescricaoTipoLogradouro());
+            ps.setString(5, endereco.getLogradouro());
+            ps.setString(6, endereco.getNumero());
+            ps.setString(7, endereco.getTipoLogradouro());
+            ps.setString(8, endereco.getCidade());
+            ps.setString(9, endereco.getUf());
+            ps.setString(10, endereco.getBairro());
 
-            statement.executeUpdate();
+            ps.executeUpdate();
 
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
@@ -60,8 +60,8 @@ public class EnderecoDAO implements CrudInterface<Endereco, Segurado> {
 
         try {
             String sql = "SELECT * FROM endereco";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultado = statement.executeQuery();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet resultado = ps.executeQuery();
             while (resultado.next()) {
                 Endereco endereco = new Endereco(
                         resultado.getInt("id"),
@@ -90,9 +90,9 @@ public class EnderecoDAO implements CrudInterface<Endereco, Segurado> {
     public Endereco buscarPorId(Integer id) {
         try {
             String sql = "SELECT * FROM endereco WHERE segurado_id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, id);
-            ResultSet resultado = statement.executeQuery();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet resultado = ps.executeQuery();
 
             while (resultado.next()) {
                 Endereco endereco = new Endereco(
@@ -164,10 +164,10 @@ public class EnderecoDAO implements CrudInterface<Endereco, Segurado> {
         String sql = "DELETE FROM endereco WHERE segurado_id = ?";
 
         try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
 
-            statement.setInt(1, id);
-            statement.executeUpdate();
+            ps.setInt(1, id);
+            ps.executeUpdate();
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {

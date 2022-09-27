@@ -5,6 +5,7 @@ C:\Users\lucasant\IdeaProjects\insurance\src\main\java\br\com\bradescoseguros\ba
 C:\Users\lucasant\IdeaProjects\insurance\src\main\java\br\com\bradescoseguros\backend\actions\CertificadoAction.java
 C:\Users\lucasant\IdeaProjects\insurance\src\main\java\br\com\bradescoseguros\backend\actions\ApoliceAction.java
 C:\Users\lucasant\IdeaProjects\insurance\src\main\java\br\com\bradescoseguros\backend\entity\TipoDescricaoSituacao.java
+C:\Users\lucasant\IdeaProjects\insurance\src\main\java\br\com\bradescoseguros\backend\facade\CertificadoFacade.java
 C:\Users\lucasant\IdeaProjects\insurance\src\main\java\br\com\bradescoseguros\backend\dao\CrudInterface.java
 C:\Users\lucasant\IdeaProjects\insurance\src\main\java\br\com\bradescoseguros\backend\dao\EnderecoDAO.java
 C:\Users\lucasant\IdeaProjects\insurance\src\main\java\br\com\bradescoseguros\backend\entity\Certificado.java

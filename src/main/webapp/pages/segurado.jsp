@@ -290,8 +290,8 @@
                         <s:textfield label="Número do documento" name="segurado.numeroDocumento" type="text" value="%{segurado.numeroDocumento}" />
                         <s:textfield label="Tipo pessoa" name="segurado.tipoPessoa" type="text" value="%{segurado.tipoPessoa}" />
                         <s:textfield label="E-mail" name="segurado.email" type="text" value="%{segurado.email}" />
-                        <s:date name="segurado.dataNascimento" var="formattedDate" format="dd/MM/yyyy" />
-                        <s:textfield label="Data de Nascimento" name="segurado.dataNascimento" value="%{formattedDate}"/>
+                        <s:set var="varDate"><s:date name="segurado.dataNascimento" format="yyyy-MM-dd"/></s:set>
+                        <s:textfield label="Data de Nascimento" name="segurado.dataNascimento" value="%{varDate}" type="date"/>
                         </div>
 
                         <h3>Endereço</h3>

@@ -22,7 +22,6 @@ public class ApoliceAutoFacade {
     public ApoliceAutoFacade() {
     }
 
-
     public void salvarApoliceAuto(ApoliceAuto apoliceAuto, Integer id) {
             Segurado segurado = seguradoDAO.buscarPorId(id);
             apoliceAutoDAO.salvar(apoliceAuto, segurado);
@@ -44,5 +43,4 @@ public class ApoliceAutoFacade {
     public void deletarApoliceAuto(Integer id) {
         apoliceAutoDAO.deletar(id);
     }
-
 }

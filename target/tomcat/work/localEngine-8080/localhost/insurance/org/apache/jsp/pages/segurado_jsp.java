@@ -28,7 +28,7 @@ public final class segurado_jsp extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fdisabled_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fdisabled_005fclass_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005flabel_005fdisabled_005fnobody;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005fname_005flabel_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fs_005fset_0026_005fvar;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fclass_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fs_005fa_0026_005fid_005fhref_005fclass;
 
@@ -57,7 +57,7 @@ public final class segurado_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fdisabled_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fdisabled_005fclass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005flabel_005fdisabled_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005fname_005flabel_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fs_005fset_0026_005fvar = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fclass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fs_005fa_0026_005fid_005fhref_005fclass = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
@@ -82,7 +82,7 @@ public final class segurado_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fdisabled_005fnobody.release();
     _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fdisabled_005fclass_005fnobody.release();
     _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005flabel_005fdisabled_005fnobody.release();
-    _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005fname_005flabel_005fnobody.release();
+    _005fjspx_005ftagPool_005fs_005fset_0026_005fvar.release();
     _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fclass_005fnobody.release();
     _005fjspx_005ftagPool_005fs_005fa_0026_005fid_005fhref_005fclass.release();
   }
@@ -2126,7 +2126,7 @@ public final class segurado_jsp extends org.apache.jasper.runtime.HttpJspBase
           return true;
         out.write("\r\n");
         out.write("                        ");
-        if (_jspx_meth_s_005fdate_005f3(_jspx_th_s_005fif_005f3, _jspx_page_context))
+        if (_jspx_meth_s_005fset_005f0(_jspx_th_s_005fif_005f3, _jspx_page_context))
           return true;
         out.write("\r\n");
         out.write("                        ");
@@ -2353,26 +2353,60 @@ public final class segurado_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_s_005fdate_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_s_005fif_005f3, PageContext _jspx_page_context)
+  private boolean _jspx_meth_s_005fset_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_s_005fif_005f3, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  s:set
+    org.apache.struts2.views.jsp.SetTag _jspx_th_s_005fset_005f0 = (org.apache.struts2.views.jsp.SetTag) _005fjspx_005ftagPool_005fs_005fset_0026_005fvar.get(org.apache.struts2.views.jsp.SetTag.class);
+    _jspx_th_s_005fset_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_s_005fset_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_s_005fif_005f3);
+    // /pages/segurado.jsp(293,24) name = var type = java.lang.String reqTime = false required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_s_005fset_005f0.setVar("varDate");
+    int _jspx_eval_s_005fset_005f0 = _jspx_th_s_005fset_005f0.doStartTag();
+    if (_jspx_eval_s_005fset_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      if (_jspx_eval_s_005fset_005f0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+        out = _jspx_page_context.pushBody();
+        _jspx_th_s_005fset_005f0.setBodyContent((javax.servlet.jsp.tagext.BodyContent) out);
+        _jspx_th_s_005fset_005f0.doInitBody();
+      }
+      do {
+        if (_jspx_meth_s_005fdate_005f3(_jspx_th_s_005fset_005f0, _jspx_page_context))
+          return true;
+        int evalDoAfterBody = _jspx_th_s_005fset_005f0.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+      if (_jspx_eval_s_005fset_005f0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+        out = _jspx_page_context.popBody();
+      }
+    }
+    if (_jspx_th_s_005fset_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fs_005fset_0026_005fvar.reuse(_jspx_th_s_005fset_005f0);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fs_005fset_0026_005fvar.reuse(_jspx_th_s_005fset_005f0);
+    return false;
+  }
+
+  private boolean _jspx_meth_s_005fdate_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_s_005fset_005f0, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  s:date
-    org.apache.struts2.views.jsp.DateTag _jspx_th_s_005fdate_005f3 = (org.apache.struts2.views.jsp.DateTag) _005fjspx_005ftagPool_005fs_005fdate_0026_005fvar_005fname_005fformat_005fnobody.get(org.apache.struts2.views.jsp.DateTag.class);
+    org.apache.struts2.views.jsp.DateTag _jspx_th_s_005fdate_005f3 = (org.apache.struts2.views.jsp.DateTag) _005fjspx_005ftagPool_005fs_005fdate_0026_005fname_005fformat_005fnobody.get(org.apache.struts2.views.jsp.DateTag.class);
     _jspx_th_s_005fdate_005f3.setPageContext(_jspx_page_context);
-    _jspx_th_s_005fdate_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_s_005fif_005f3);
-    // /pages/segurado.jsp(293,24) name = name type = java.lang.String reqTime = false required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_s_005fdate_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_s_005fset_005f0);
+    // /pages/segurado.jsp(293,45) name = name type = java.lang.String reqTime = false required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_s_005fdate_005f3.setName("segurado.dataNascimento");
-    // /pages/segurado.jsp(293,24) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_s_005fdate_005f3.setVar("formattedDate");
-    // /pages/segurado.jsp(293,24) name = format type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_s_005fdate_005f3.setFormat("dd/MM/yyyy");
+    // /pages/segurado.jsp(293,45) name = format type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_s_005fdate_005f3.setFormat("yyyy-MM-dd");
     int _jspx_eval_s_005fdate_005f3 = _jspx_th_s_005fdate_005f3.doStartTag();
     if (_jspx_th_s_005fdate_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fs_005fdate_0026_005fvar_005fname_005fformat_005fnobody.reuse(_jspx_th_s_005fdate_005f3);
+      _005fjspx_005ftagPool_005fs_005fdate_0026_005fname_005fformat_005fnobody.reuse(_jspx_th_s_005fdate_005f3);
       return true;
     }
-    _005fjspx_005ftagPool_005fs_005fdate_0026_005fvar_005fname_005fformat_005fnobody.reuse(_jspx_th_s_005fdate_005f3);
+    _005fjspx_005ftagPool_005fs_005fdate_0026_005fname_005fformat_005fnobody.reuse(_jspx_th_s_005fdate_005f3);
     return false;
   }
 
@@ -2381,7 +2415,7 @@ public final class segurado_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  s:textfield
-    org.apache.struts2.views.jsp.ui.TextFieldTag _jspx_th_s_005ftextfield_005f41 = (org.apache.struts2.views.jsp.ui.TextFieldTag) _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005fname_005flabel_005fnobody.get(org.apache.struts2.views.jsp.ui.TextFieldTag.class);
+    org.apache.struts2.views.jsp.ui.TextFieldTag _jspx_th_s_005ftextfield_005f41 = (org.apache.struts2.views.jsp.ui.TextFieldTag) _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fnobody.get(org.apache.struts2.views.jsp.ui.TextFieldTag.class);
     _jspx_th_s_005ftextfield_005f41.setPageContext(_jspx_page_context);
     _jspx_th_s_005ftextfield_005f41.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_s_005fif_005f3);
     // /pages/segurado.jsp(294,24) name = label type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
@@ -2389,13 +2423,15 @@ public final class segurado_jsp extends org.apache.jasper.runtime.HttpJspBase
     // /pages/segurado.jsp(294,24) name = name type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_s_005ftextfield_005f41.setName("segurado.dataNascimento");
     // /pages/segurado.jsp(294,24) name = value type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_s_005ftextfield_005f41.setValue("%{formattedDate}");
+    _jspx_th_s_005ftextfield_005f41.setValue("%{varDate}");
+    // /pages/segurado.jsp(294,24) name = type type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_s_005ftextfield_005f41.setType("date");
     int _jspx_eval_s_005ftextfield_005f41 = _jspx_th_s_005ftextfield_005f41.doStartTag();
     if (_jspx_th_s_005ftextfield_005f41.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005fname_005flabel_005fnobody.reuse(_jspx_th_s_005ftextfield_005f41);
+      _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fnobody.reuse(_jspx_th_s_005ftextfield_005f41);
       return true;
     }
-    _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005fname_005flabel_005fnobody.reuse(_jspx_th_s_005ftextfield_005f41);
+    _005fjspx_005ftagPool_005fs_005ftextfield_0026_005fvalue_005ftype_005fname_005flabel_005fnobody.reuse(_jspx_th_s_005ftextfield_005f41);
     return false;
   }
 
