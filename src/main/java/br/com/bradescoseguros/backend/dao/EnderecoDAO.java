@@ -12,8 +12,13 @@ import br.com.bradescoseguros.backend.connection.SingleConnection;
 import br.com.bradescoseguros.backend.entity.Endereco;
 import br.com.bradescoseguros.backend.entity.Segurado;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @Repository
 public class EnderecoDAO implements CrudInterface<Endereco, Segurado> {
+
+    private static final Logger logger = LogManager.getLogger(EnderecoDAO.class);
 
     private Connection connection;
 
@@ -46,11 +51,12 @@ public class EnderecoDAO implements CrudInterface<Endereco, Segurado> {
             ps.setString(10, endereco.getBairro());
 
             ps.executeUpdate();
+            logger.info("Endereço salvo com sucesso.");
 
         } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
     }
 
@@ -79,8 +85,10 @@ public class EnderecoDAO implements CrudInterface<Endereco, Segurado> {
                 retorno.add(endereco);
             }
 
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
 
         return retorno;
@@ -110,9 +118,12 @@ public class EnderecoDAO implements CrudInterface<Endereco, Segurado> {
 
                 return endereco;
             }
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
+
         return null;
     }
 
@@ -153,9 +164,12 @@ public class EnderecoDAO implements CrudInterface<Endereco, Segurado> {
                 return enderecoAtualizado;
             }
 
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
+
         return null;
     }
 
@@ -169,9 +183,9 @@ public class EnderecoDAO implements CrudInterface<Endereco, Segurado> {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
     }
 

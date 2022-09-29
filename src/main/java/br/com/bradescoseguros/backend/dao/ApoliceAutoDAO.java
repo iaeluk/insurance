@@ -14,8 +14,13 @@ import br.com.bradescoseguros.backend.entity.ApoliceAuto;
 import br.com.bradescoseguros.backend.entity.Segurado;
 import br.com.bradescoseguros.backend.entity.TipoApolice;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @Repository
 public class ApoliceAutoDAO implements CrudInterface<ApoliceAuto, Segurado> {
+
+    private static final Logger logger = LogManager.getLogger(ApoliceAutoDAO.class);
 
     private Connection connection;
 
@@ -54,10 +59,12 @@ public class ApoliceAutoDAO implements CrudInterface<ApoliceAuto, Segurado> {
 
             ps.executeUpdate();
 
+            logger.info("Apólice salva com sucesso.");
+
         } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
 
     }
@@ -92,8 +99,10 @@ public class ApoliceAutoDAO implements CrudInterface<ApoliceAuto, Segurado> {
                 retorno.add(apoliceAuto);
             }
 
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
 
         return retorno;
@@ -128,9 +137,12 @@ public class ApoliceAutoDAO implements CrudInterface<ApoliceAuto, Segurado> {
 
                 return apoliceAuto;
             }
+        }   catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
+
         return null;
     }
 
@@ -181,9 +193,12 @@ public class ApoliceAutoDAO implements CrudInterface<ApoliceAuto, Segurado> {
                 return apoliceAutoAtualizada;
             }
 
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
+
         return null;
     }
 
@@ -196,11 +211,11 @@ public class ApoliceAutoDAO implements CrudInterface<ApoliceAuto, Segurado> {
 
             ps.setInt(1, id);
             ps.executeUpdate();
+            
         } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
-
     }
 }

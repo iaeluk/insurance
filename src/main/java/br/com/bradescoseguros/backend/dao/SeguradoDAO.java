@@ -13,8 +13,13 @@ import br.com.bradescoseguros.backend.connection.SingleConnection;
 import br.com.bradescoseguros.backend.entity.Segurado;
 import br.com.bradescoseguros.backend.entity.TipoPessoa;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @Repository
 public class SeguradoDAO implements CrudInterface<Segurado, Segurado> {
+
+    private static final Logger logger = LogManager.getLogger(SeguradoDAO.class);
 
     private Connection connection;
 
@@ -36,11 +41,12 @@ public class SeguradoDAO implements CrudInterface<Segurado, Segurado> {
             ps.setString(5, segurado.getEmail());
 
             ps.executeUpdate();
+            logger.error("Segurado salvo com sucesso.");
 
         } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
 
     }
@@ -68,9 +74,12 @@ public class SeguradoDAO implements CrudInterface<Segurado, Segurado> {
 
                 listaDeSegurados.add(segurado);
             }
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
+
         return listaDeSegurados;
     }
 
@@ -94,9 +103,12 @@ public class SeguradoDAO implements CrudInterface<Segurado, Segurado> {
                 return segurado;
             }
 
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
+
         return null;
     }
 
@@ -127,9 +139,12 @@ public class SeguradoDAO implements CrudInterface<Segurado, Segurado> {
                 return seguradoAtualizado;
             }
 
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
+
         return null;
 
     }
@@ -144,9 +159,9 @@ public class SeguradoDAO implements CrudInterface<Segurado, Segurado> {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
     }
 }

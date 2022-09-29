@@ -13,8 +13,13 @@ import br.com.bradescoseguros.backend.entity.ApoliceAuto;
 import br.com.bradescoseguros.backend.entity.Certificado;
 import br.com.bradescoseguros.backend.entity.TipoDescricaoSituacao;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @Repository
 public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
+
+    private static final Logger logger = LogManager.getLogger(CertificadoDAO.class);
 
     private Connection connection;
 
@@ -43,11 +48,12 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
             ps.setString(6, certificado.getRamo());
 
             ps.executeUpdate();
+            logger.info("Certificado salvo com sucesso.");
 
         } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
 
     }
@@ -73,8 +79,10 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
                 retorno.add(certificado);
             }
 
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
 
         return retorno;
@@ -101,9 +109,12 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
                 return certificado;
             }
 
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
+
         return null;
     }
 
@@ -136,9 +147,12 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
                 return certificadoAtualizado;
             }
 
+        } catch (SQLException e) {
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
+
         return null;
     }
 
@@ -152,9 +166,9 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
-            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+            logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getStackTrace());
         }
     }
 }
