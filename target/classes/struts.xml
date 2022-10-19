@@ -7,7 +7,8 @@
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.objectFactory" value="spring" />
     <constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
-    
+
+    <constant name="struts.action.excludePattern" value="/service/.*" />
     <package name="default" namespace="/" extends="struts-default">
         <action name="">
             <result>pages/home.jsp</result>
@@ -37,6 +38,11 @@
         </action>
 
         <action name="deletar-segurado-id" class="br.com.bradescoseguros.backend.actions.SeguradoAction" method="deletarSegurado">
+            <param name="id"></param>
+            <result name="SUCCESS">pages/segurado.jsp</result>
+        </action>
+
+        <action name="relatorio-segurado" class="br.com.bradescoseguros.backend.actions.SeguradoAction" method="relatorioSegurado">
             <param name="id"></param>
             <result name="SUCCESS">pages/segurado.jsp</result>
         </action>
@@ -75,6 +81,11 @@
             <result name="SUCCESS">pages/apolice.jsp</result>
         </action>
 
+        <action name="relatorio-apolice" class="br.com.bradescoseguros.backend.actions.ApoliceAction" method="relatorioApolice">
+            <param name="id"></param>
+            <result name="SUCCESS">pages/apolice.jsp</result>
+        </action>
+
 
     <!-- CERTIFICADO -->
     <action name="salvar-certificado" class="br.com.bradescoseguros.backend.actions.CertificadoAction" >
@@ -105,6 +116,11 @@
     </action>
 
     <action name="deletar-certificado-id" class="br.com.bradescoseguros.backend.actions.CertificadoAction" method="deletarCertificado">
+        <param name="id"></param>
+        <result name="SUCCESS">pages/certificado.jsp</result>
+    </action>
+
+    <action name="relatorio-certificado" class="br.com.bradescoseguros.backend.actions.CertificadoAction" method="relatorioCertificado">
         <param name="id"></param>
         <result name="SUCCESS">pages/certificado.jsp</result>
     </action>

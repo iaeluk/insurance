@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PrimeiroRelatorio" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ed2baf4d-cd2f-4dd7-910a-2a8b9cfcb8e3">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM segurado]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="numero_documento" class="java.lang.String"/>
+	<field name="tipo_pessoa" class="java.lang.String"/>
+	<field name="data_nascimento" class="java.sql.Date"/>
+	<field name="email" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="75" y="28" width="241" height="26" uuid="5f0e16a7-f123-4f27-a7dd-0a881836eaff"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEMA DE SEGUROS]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement x="416" y="34" width="100" height="20" uuid="921e90c8-f55d-4722-a855-c9d5b74819d4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="54" width="128" height="14" uuid="c8328f75-13b5-4003-abd9-65dc41cf5be2"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de segurados]]></text>
+			</staticText>
+			<line>
+				<reportElement x="18" y="74" width="537" height="1" uuid="54766b10-694b-4505-ab2f-3b1bd05da2da"/>
+			</line>
+			<image>
+				<reportElement x="18" y="28" width="59" height="40" uuid="79b8bd26-d310-4f72-8ae2-efdbb7a0cf3e"/>
+				<imageExpression><![CDATA["C:\\Users\\lucasant\\Downloads\\red-umbrella.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="0" width="88" height="20" uuid="aa53ed77-a232-45ee-bc9b-4c34464a2c7d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="0" width="89" height="20" uuid="7fb252c3-a165-492e-8ef7-3a234f3f523b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="0" width="88" height="20" uuid="458fee36-877b-4958-9b51-940521499504"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo pessoa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="0" width="100" height="20" uuid="9ef4645e-271c-4735-b986-447c32bfab43"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Nascimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="0" width="120" height="20" uuid="e33d6c85-f4f3-4696-a974-982da7ac5021"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-mail]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="0" width="88" height="20" uuid="ec68b37a-491e-4f48-927c-67bef3d310f0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="0" width="89" height="20" uuid="a3b7c209-6ec0-4870-aed0-e4753ea7c023"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{numero_documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="0" width="88" height="20" uuid="df21ec39-be34-4678-ba22-1b86f7413700"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tipo_pessoa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="0" width="100" height="20" uuid="1c308e10-984c-4193-b8b8-014670381d33"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="120" height="20" uuid="87a6c442-0e3a-4de0-a24d-446bf5e9f7db"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="32" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

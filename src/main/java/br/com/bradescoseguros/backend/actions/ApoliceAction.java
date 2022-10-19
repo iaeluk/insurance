@@ -111,4 +111,16 @@ public class ApoliceAction {
         }
         return "ERROR";
     }
+
+    public String relatorioApolice() {
+        try {
+            apolices = apoliceAutoFacade.buscarApoliceAuto();
+            tipoFormulario = "buscarApoliceAuto";
+            apoliceAutoFacade.relatorio();
+            return "SUCCESS";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "ERROR";
+    }
 }

@@ -180,7 +180,15 @@
 
                     <div id="consultaForm">
                         <table>
-                            <caption>CONSULTA DE SEGURADO</caption>
+                            <caption style="display: flex; justify-content: space-between;">
+                                <p>CONSULTA DE SEGURADOS</p>
+                                <s:a action="relatorio-segurado">
+                                    <div style="display: flex; flex-direction: column; align-items: center; cursor: pointer;" class="relatorio">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/4755/4755715.png" width="28px" alt="Relatório">
+                                    <span style="font-size: .7rem;">Relatório</span>
+                                    </div>
+                                </s:a>
+                            </caption>
                             <tr>
                                 <th>ID</th>
                                 <th>Nome</th>
@@ -190,6 +198,7 @@
                                 <th>Email</th>
                                 <th>Edição/Exclusão</th>
                             </tr>
+                            
                             <s:iterator value="segurados">
                                 <tr class="linha">
                                     <td>

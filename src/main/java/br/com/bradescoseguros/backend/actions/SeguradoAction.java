@@ -102,4 +102,16 @@ public class SeguradoAction {
         }
         return "ERROR";
     }
+
+    public String relatorioSegurado() {
+        try {
+            segurados = seguradoFacade.buscarSegurado();
+            tipoFormulario = "buscarSegurado";
+            seguradoFacade.relatorio();
+            return "SUCCESS";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "ERROR";
+    }
 }

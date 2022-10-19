@@ -131,7 +131,15 @@
 
                     <div id="consultaForm">
                         <table>
-                            <caption>CONSULTA DE CERTIFICADO</caption>
+                            <caption style="display: flex; justify-content: space-between;">
+                                <p>CONSULTA DE CERTIFICADOS</p>
+                                <s:a action="relatorio-certificado">
+                                    <div style="display: flex; flex-direction: column; align-items: center; cursor: pointer;" class="relatorio">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/4755/4755715.png" width="28px" alt="Relatório">
+                                    <span style="font-size: .7rem;">Relatório</span>
+                                    </div>
+                                </s:a>
+                            </caption>
                             <tr>
                                 <th>ID</th>
                                 <th>ID Apólice</th>

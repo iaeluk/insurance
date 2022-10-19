@@ -43,4 +43,8 @@ public class CertificadoFacade {
     public void deletarCertificado(Integer id) {
         certificadoDAO.deletar(id);
     }
+
+    public void relatorio() {
+        certificadoDAO.gerarRelatorio();
+    }
 }

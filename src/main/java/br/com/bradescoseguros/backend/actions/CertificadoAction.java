@@ -111,4 +111,16 @@ public class CertificadoAction {
         }
         return "ERROR";
     }
+
+    public String relatorioCertificado() {
+        try {
+            certificados = certificadoFacade.buscarCertificado();
+            tipoFormulario = "buscarCertificado";
+            certificadoFacade.relatorio();
+            return "SUCCESS";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "ERROR";
+    }
 }

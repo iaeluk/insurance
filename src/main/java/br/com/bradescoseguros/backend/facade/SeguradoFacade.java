@@ -64,4 +64,8 @@ public class SeguradoFacade {
         telefoneDAO.deletar(id);
         seguradoDAO.deletar(id);
     }
+
+    public void relatorio() {
+        seguradoDAO.gerarRelatorio();
+    }
 }

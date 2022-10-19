@@ -207,11 +207,11 @@ button:hover {
     filter: opacity(100%);
 }
 
-.detalhes, .editar, .excluir {
+.detalhes, .editar, .excluir, .relatorio {
     filter: opacity(60%);
 }
 
-.detalhes:hover, .editar:hover, .excluir:hover {
+.detalhes:hover, .editar:hover, .excluir:hover, .relatorio:hover {
     filter: opacity(100%);
 }
 

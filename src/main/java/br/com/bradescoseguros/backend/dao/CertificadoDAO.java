@@ -1,5 +1,8 @@
 package br.com.bradescoseguros.backend.dao;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +15,14 @@ import br.com.bradescoseguros.backend.connection.SingleConnection;
 import br.com.bradescoseguros.backend.entity.ApoliceAuto;
 import br.com.bradescoseguros.backend.entity.Certificado;
 import br.com.bradescoseguros.backend.entity.TipoDescricaoSituacao;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -167,6 +178,32 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
             ps.executeUpdate();
         } catch (SQLException e) {
             logger.error("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+        } catch (Exception e) {
+            logger.error(e.getStackTrace());
+        }
+    }
+
+    public void gerarRelatorio() {
+        try {
+            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\lucasant\\IdeaProjects\\insurance\\src\\main\\webapp\\reports\\Certificado.jrxml");
+            String query = "select * from certificado";
+
+            JRDesignQuery updateQuery = new JRDesignQuery();
+            updateQuery.setText(query);
+
+            jdesign.setQuery(updateQuery);
+
+            JasperReport jReport = JasperCompileManager.compileReport(jdesign);
+            JasperPrint jprint = JasperFillManager.fillReport(jReport, null, connection);
+            
+            OutputStream outputStream = null;
+            String userHomeDirectory = "C:\\Impressao";
+
+            String outputFile = userHomeDirectory + File.separatorChar + "RelatorioDeCertificados.pdf";
+            outputStream = new FileOutputStream(new File(outputFile));   
+
+            JasperExportManager.exportReportToPdfStream(jprint, outputStream);
+
         } catch (Exception e) {
             logger.error(e.getStackTrace());
         }

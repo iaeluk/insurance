@@ -43,4 +43,8 @@ public class ApoliceAutoFacade {
     public void deletarApoliceAuto(Integer id) {
         apoliceAutoDAO.deletar(id);
     }
+
+    public void relatorio() {
+        apoliceAutoDAO.gerarRelatorio();
+    }
 }
