@@ -1,5 +1,7 @@
 package br.com.bradescoseguros.backend.ws;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 
 import br.com.bradescoseguros.backend.dao.SeguradoDAO;
+import br.com.bradescoseguros.backend.entity.Segurado;
 
 @Service
 @Path("/segurado")
@@ -23,8 +26,17 @@ public class SeguradoService {
     @GET
     @Path("/id/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String seguradoId(@PathParam("id") int id) {
-        return seguradoDAO.buscar().get(id).getNome();
+    public ArrayList<Segurado> seguradoId(@PathParam("id") int id) {
+        ArrayList<Segurado> segurados = new ArrayList<Segurado>();
+        segurados.add(seguradoDAO.buscarPorId(id));
+        return segurados;
+    }
+
+    @GET
+    @Path("/todos")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<Segurado> listaSegurados() {
+        return seguradoDAO.buscar();
     }
 
 }

@@ -3,9 +3,11 @@ package br.com.bradescoseguros.backend.ws;
 import java.util.List;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.Style;
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,4 +28,10 @@ public class ApoliceService {
 	public List<ApoliceAuto> listarTodas(){
 		return apoliceAutoDAO.buscar();
 	}
+
+	@WebMethod(operationName = "add")
+	public int add(@WebParam(name = "i") int i, @WebParam(name = "j") int j) {
+		return i+j;
+	}
+	
 }
