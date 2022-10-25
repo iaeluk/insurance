@@ -23,7 +23,7 @@
 
 
     <context:annotation-config/>
-    <context:component-scan base-package="br.com.bradescoseguros.backend"/>
+    <context:component-scan base-package="br.com.seguros.backend"/>
 
     <jaxws:endpoint id="buscarApolices" implementor="#apoliceService" address="/apolices" />
 
