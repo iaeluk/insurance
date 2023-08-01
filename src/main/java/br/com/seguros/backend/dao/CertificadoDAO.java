@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.com.seguros.backend.connection.SingleConnection;
@@ -34,8 +37,16 @@ public class CertificadoDAO implements CrudInterface<Certificado, ApoliceAuto> {
 
     private Connection connection;
 
+    @Autowired
+    private DataSource dataSource;
+
     public CertificadoDAO() {
-        connection = SingleConnection.getConnection();
+        try {
+            connection = dataSource.getConnection();
+        } catch (Exception e) {
+            // TODO: handle exception
+            logger.error(e.getStackTrace());
+        }
     }
 
     @Override

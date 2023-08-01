@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 import br.com.seguros.backend.entity.ApoliceAuto;
 import br.com.seguros.backend.entity.Segurado;
 import br.com.seguros.backend.facade.ApoliceAutoFacade;
@@ -13,7 +15,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ApoliceAction {
+public class ApoliceAction extends ActionSupport{
 
     private ApoliceAuto apoliceAuto;
     private ArrayList<ApoliceAuto> apolices;
@@ -39,18 +41,18 @@ public class ApoliceAction {
         tipoFormulario = "salvarApoliceAuto";         
         verDetalhes = false;
         verEdicao = false;
-        return "SUCCESS";
+        return ERROR;
     }
     
     public String salvarApoliceAuto() {
         try {
             apoliceAutoFacade.salvarApoliceAuto(apoliceAuto, apoliceAuto.getSeguradoId());
             tipoFormulario = "salvarApoliceAuto";         
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String buscarApoliceAuto() {
@@ -58,11 +60,11 @@ public class ApoliceAction {
             apolices = apoliceAutoFacade.buscarApoliceAuto();
             segurados = seguradoFacade.buscarSegurado();
             tipoFormulario = "buscarApoliceAuto";
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String buscarApoliceAutoPorId() {
@@ -73,18 +75,18 @@ public class ApoliceAction {
             verDetalhes = true;
             verEdicao = false;
             buscarApoliceAuto();
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String paginaEdicaoApolice() {
         buscarApoliceAutoPorId();
         verDetalhes = false;
         verEdicao = true;
-        return "SUCCESS";
+        return SUCCESS;
     }
 
     public String editarApoliceAuto() {
@@ -93,11 +95,11 @@ public class ApoliceAction {
             buscarApoliceAutoPorId();
             verDetalhes = false;
             verEdicao = true;
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String deletarApoliceAuto() {
@@ -105,11 +107,11 @@ public class ApoliceAction {
             apoliceAutoFacade.deletarApoliceAuto(id);
             buscarApoliceAuto();
             tipoFormulario = "buscarApoliceAuto";
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String relatorioApolice() {
@@ -117,10 +119,10 @@ public class ApoliceAction {
             apolices = apoliceAutoFacade.buscarApoliceAuto();
             tipoFormulario = "buscarApoliceAuto";
             apoliceAutoFacade.relatorio();
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 }

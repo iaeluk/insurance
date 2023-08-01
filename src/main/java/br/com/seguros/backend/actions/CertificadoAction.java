@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 import br.com.seguros.backend.entity.ApoliceAuto;
 import br.com.seguros.backend.entity.Certificado;
 import br.com.seguros.backend.facade.ApoliceAutoFacade;
@@ -13,7 +15,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CertificadoAction {
+public class CertificadoAction extends ActionSupport {
 
     private Certificado certificado;
     private ArrayList<Certificado> certificados;
@@ -39,18 +41,18 @@ public class CertificadoAction {
         tipoFormulario = "salvarCertificado";         
         verDetalhes = false;
         verEdicao = false;
-        return "SUCCESS";
+        return SUCCESS;
     }
     
     public String salvarCertificado() {
         try {
             certificadoFacade.salvarCertificado(certificado, certificado.getApoliceAutoId());
             tipoFormulario = "salvarCertificado";         
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String buscarCertificado() {
@@ -58,11 +60,11 @@ public class CertificadoAction {
             certificados = certificadoFacade.buscarCertificado();
             apolices = apoliceAutoFacade.buscarApoliceAuto();
             tipoFormulario = "buscarCertificado";
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String buscarCertificadoPorId() {
@@ -73,18 +75,18 @@ public class CertificadoAction {
             verDetalhes = true;
             verEdicao = false;
             buscarCertificado();
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String paginaEdicaoCertificado() {
         buscarCertificadoPorId();
         verDetalhes = false;
         verEdicao = true;
-        return "SUCCESS";
+        return SUCCESS;
     }
 
     public String editarCertificado() {
@@ -93,11 +95,11 @@ public class CertificadoAction {
             buscarCertificadoPorId();
             verDetalhes = false;
             verEdicao = true;
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String deletarCertificado() {
@@ -105,11 +107,11 @@ public class CertificadoAction {
             certificadoFacade.deletarCertificado(id);
             buscarCertificado();
             tipoFormulario = "buscarCertificado";
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String relatorioCertificado() {
@@ -117,10 +119,10 @@ public class CertificadoAction {
             certificados = certificadoFacade.buscarCertificado();
             tipoFormulario = "buscarCertificado";
             certificadoFacade.relatorio();
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 }

@@ -1,5 +1,6 @@
 package br.com.seguros.backend.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Segurado {
+public class Segurado implements Serializable {
 
     private Integer id;
     private String nome;

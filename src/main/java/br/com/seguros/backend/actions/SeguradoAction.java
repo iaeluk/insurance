@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 import br.com.seguros.backend.entity.Endereco;
 import br.com.seguros.backend.entity.Segurado;
 import br.com.seguros.backend.entity.Telefone;
@@ -13,7 +15,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SeguradoAction {
+public class SeguradoAction extends ActionSupport{
 
     private Segurado segurado;
     private Endereco endereco;
@@ -36,29 +38,29 @@ public class SeguradoAction {
         tipoFormulario = "salvarSegurado";         
         verDetalhes = false;
         verEdicao = false;
-        return "SUCCESS";
+        return SUCCESS;
     }
 
     public String salvarSegurado() {
         try {
             seguradoFacade.salvarSegurado(segurado, endereco, telefone);
             tipoFormulario = "salvarSegurado";
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String buscarSegurado() {
         try {
             segurados = seguradoFacade.buscarSegurado();
             tipoFormulario = "buscarSegurado";
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String buscarSeguradoPorId() {
@@ -71,11 +73,11 @@ public class SeguradoAction {
             verDetalhes = true;
             verEdicao = false;
             buscarSegurado();
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String editarSegurado() {
@@ -84,11 +86,11 @@ public class SeguradoAction {
             buscarSeguradoPorId();
             verDetalhes = false;
             verEdicao = true;
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String deletarSegurado() {
@@ -96,11 +98,11 @@ public class SeguradoAction {
             seguradoFacade.deletarSegurado(id);
             buscarSegurado();
             tipoFormulario = "buscarSegurado";
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 
     public String relatorioSegurado() {
@@ -108,10 +110,10 @@ public class SeguradoAction {
             segurados = seguradoFacade.buscarSegurado();
             tipoFormulario = "buscarSegurado";
             seguradoFacade.relatorio();
-            return "SUCCESS";
+            return SUCCESS;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return ERROR;
     }
 }

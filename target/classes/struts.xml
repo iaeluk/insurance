@@ -16,113 +16,113 @@
 
         <!-- SEGURADO -->
         <action name="salvar-segurado" class="br.com.seguros.backend.actions.SeguradoAction">
-            <result name="SUCCESS">pages/segurado.jsp</result>
+            <result name="success">pages/segurado.jsp</result>
         </action>
 
         <action name="salvar-segurado-submit" class="br.com.seguros.backend.actions.SeguradoAction" method="salvarSegurado">
-            <result name="SUCCESS">pages/segurado.jsp</result>
+            <result name="success">pages/segurado.jsp</result>
         </action>
 
          <action name="buscar-segurado" class="br.com.seguros.backend.actions.SeguradoAction" method="buscarSegurado">
-            <result name="SUCCESS">pages/segurado.jsp</result>
+            <result name="success">pages/segurado.jsp</result>
         </action>
 
         <action name="buscar-segurado-id" class="br.com.seguros.backend.actions.SeguradoAction" method="buscarSeguradoPorId">
             <param name="id"></param>
-            <result name="SUCCESS">pages/segurado.jsp</result>
+            <result name="success">pages/segurado.jsp</result>
         </action>
 
         <action name="editar-segurado-id" class="br.com.seguros.backend.actions.SeguradoAction" method="editarSegurado">
             <param name="id"></param>
-            <result name="SUCCESS">pages/segurado.jsp</result>
+            <result name="success">pages/segurado.jsp</result>
         </action>
 
         <action name="deletar-segurado-id" class="br.com.seguros.backend.actions.SeguradoAction" method="deletarSegurado">
             <param name="id"></param>
-            <result name="SUCCESS">pages/segurado.jsp</result>
+            <result name="success">pages/segurado.jsp</result>
         </action>
 
         <action name="relatorio-segurado" class="br.com.seguros.backend.actions.SeguradoAction" method="relatorioSegurado">
             <param name="id"></param>
-            <result name="SUCCESS">pages/segurado.jsp</result>
+            <result name="success">pages/segurado.jsp</result>
         </action>
 
 
         <!-- APOLICE -->
         <action name="salvar-apolice" class="br.com.seguros.backend.actions.ApoliceAction" >
-            <result name="SUCCESS">pages/apolice.jsp</result>
+            <result name="success">pages/apolice.jsp</result>
         </action>
 
         <action name="salvar-apolice-submit" class="br.com.seguros.backend.actions.ApoliceAction" method="salvarApoliceAuto">
-            <result name="SUCCESS">pages/apolice.jsp</result>
+            <result name="success">pages/apolice.jsp</result>
         </action>
 
          <action name="buscar-apolice" class="br.com.seguros.backend.actions.ApoliceAction" method="buscarApoliceAuto">
-            <result name="SUCCESS">pages/apolice.jsp</result>
+            <result name="success">pages/apolice.jsp</result>
         </action>
 
         <action name="buscar-apolice-id" class="br.com.seguros.backend.actions.ApoliceAction" method="buscarApoliceAutoPorId">
             <param name="id"></param>
-            <result name="SUCCESS">pages/apolice.jsp</result>
+            <result name="success">pages/apolice.jsp</result>
         </action>
 
         <action name="editar-apolice-id" class="br.com.seguros.backend.actions.ApoliceAction" method="paginaEdicaoApolice">
             <param name="id"></param>
-            <result name="SUCCESS">pages/apolice.jsp</result>
+            <result name="success">pages/apolice.jsp</result>
         </action>
 
         <action name="editar-apolice-id-submit" class="br.com.seguros.backend.actions.ApoliceAction" method="editarApoliceAuto">
             <param name="id"></param>
-            <result name="SUCCESS">pages/apolice.jsp</result>
+            <result name="success">pages/apolice.jsp</result>
         </action>
 
         <action name="deletar-apolice-id" class="br.com.seguros.backend.actions.ApoliceAction" method="deletarApoliceAuto">
             <param name="id"></param>
-            <result name="SUCCESS">pages/apolice.jsp</result>
+            <result name="success">pages/apolice.jsp</result>
         </action>
 
         <action name="relatorio-apolice" class="br.com.seguros.backend.actions.ApoliceAction" method="relatorioApolice">
             <param name="id"></param>
-            <result name="SUCCESS">pages/apolice.jsp</result>
+            <result name="success">pages/apolice.jsp</result>
         </action>
 
 
     <!-- CERTIFICADO -->
     <action name="salvar-certificado" class="br.com.seguros.backend.actions.CertificadoAction" >
-        <result name="SUCCESS">pages/certificado.jsp</result>
+        <result name="success">pages/certificado.jsp</result>
     </action>
 
     <action name="salvar-certificado-submit" class="br.com.seguros.backend.actions.CertificadoAction" method="salvarCertificado">
-        <result name="SUCCESS">pages/certificado.jsp</result>
+        <result name="success">pages/certificado.jsp</result>
     </action>
 
      <action name="buscar-certificado" class="br.com.seguros.backend.actions.CertificadoAction" method="buscarCertificado">
-        <result name="SUCCESS">pages/certificado.jsp</result>
+        <result name="success">pages/certificado.jsp</result>
     </action>
 
     <action name="buscar-certificado-id" class="br.com.seguros.backend.actions.CertificadoAction" method="buscarCertificadoPorId">
         <param name="id"></param>
-        <result name="SUCCESS">pages/certificado.jsp</result>
+        <result name="success">pages/certificado.jsp</result>
     </action>
 
     <action name="editar-certificado-id" class="br.com.seguros.backend.actions.CertificadoAction" method="paginaEdicaoCertificado">
         <param name="id"></param>
-        <result name="SUCCESS">pages/certificado.jsp</result>
+        <result name="success">pages/certificado.jsp</result>
     </action>
 
     <action name="editar-certificado-id-submit" class="br.com.seguros.backend.actions.CertificadoAction" method="editarCertificado">
         <param name="id"></param>
-        <result name="SUCCESS">pages/certificado.jsp</result>
+        <result name="success">pages/certificado.jsp</result>
     </action>
 
     <action name="deletar-certificado-id" class="br.com.seguros.backend.actions.CertificadoAction" method="deletarCertificado">
         <param name="id"></param>
-        <result name="SUCCESS">pages/certificado.jsp</result>
+        <result name="success">pages/certificado.jsp</result>
     </action>
 
     <action name="relatorio-certificado" class="br.com.seguros.backend.actions.CertificadoAction" method="relatorioCertificado">
         <param name="id"></param>
-        <result name="SUCCESS">pages/certificado.jsp</result>
+        <result name="success">pages/certificado.jsp</result>
     </action>
 
     </package>
